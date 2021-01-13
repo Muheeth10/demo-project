@@ -10,58 +10,17 @@ import ProductData from './Utils/ProductData';
 
 class App extends Component {
   state= {
-  
   ur:'https://imgur.com/iOeUBV7.png',
   time:0,
   showHeartBeatSection:false,
   heart:'https://i.giphy.com/media/1kJwmjkqY9JwJ0wBNB/giphy.webp',
-
+  ProductData:ProductData,
   }
-
-
-// Object.freeze(ProductData); //This line of code just makes your object as a constant. No values can be updated.
-
-
-
-  
-    // const Blogarray = ProductData.colorOptions.map((val,pos) => {
-     
-    //   return(
-
-    //   <Blogitem key={pos} title={ProductData.title}  description={ProductData.description} strp={val.styleName} img={val.imageUrl}/>
-      
-    //   );
-
-    //   })
-
     
       
-   url = (clr) => {
-    
-     //console.log('clr', clr);
-     this.state.colorOptions.map((color,pos) => {  
-      
-      if(clr  === color.styleName)
-      {
-         this.setState({ur : color.imageUrl})
-      }
-      // else if(color.styleName === 'Blue Strap')
-      // {
-      //   return color.imageUrl
-      // }
-      // else if(color.styleName === 'Purple Strap')
-      // {
-      //   return color.imageUrl
-      // }
-      // else if(color.styleName === 'Red Strap')
-      // {
-      //   return color.imageUrl
-      // }
-      // else{
-      //   return "invalid option"
-      // }
-      
-    })
+   url = (pos) => {
+    const updatedPreviewImage = this.state.ProductData.colorOptions[pos].imageUrl;
+    this.setState({ur:updatedPreviewImage});
   }
 
   timedis = () =>{
@@ -89,7 +48,7 @@ class App extends Component {
            
             <Topbar/>
             <ProductPreview  u={this.state.ur} uh={this.state.heart} showHeartBeatSection={this.state.showHeartBeatSection}/>
-            <ProductDetails url={this.url} data={ProductData} />
+            <ProductDetails data={ProductData} onColorOptionClick={this.url} />
             
         </div>
       </div>
