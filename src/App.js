@@ -31,23 +31,33 @@ class App extends Component {
     this.setState({showHeartBeatSection: updatedState});
   }
 
-  timedis = () =>{
-    if(this.state.style === {display : 'none'}){
-      this.setState({style : {display:'inline-block'}})
-  }
-  else {
-    this.setState({style : {display:'none'}})
-  }
-}
-  heartrate = () => {
-    console.log('Heart rate');
-  }
+//   timedis = () =>{
+//     if(this.state.style === {display : 'none'}){
+//       this.setState({style : {display:'inline-block'}})
+//   }
+//   else {
+//     this.setState({style : {display:'none'}})
+//   }
+// }
+//   heartrate = () => {
+//     console.log('Heart rate');
+//   }
 
 
-  val = '';
+  shouldComponentUpdate(nextProps,nextState){
+    // console.log('Next State =>',nextState);
+    // console.log('Current State =>', this.state);
+    console.log("Inside shouldComponentUpdate");
+    if(nextState.currentImagePos === this.state.currentImagePos){
+      return false;
+    }
+    
+    return true;
+  }
 
   render(){
     
+    console.log('component rendered');
   
     return (
       <div className="App">
