@@ -1,0 +1,23 @@
+.mainContainer{
+    padding:4% 12%;
+    margin-top:32px;
+    box-sizing: border-box;
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+.ProductData{
+    width:50%;
+}
+
+.ProductImage{
+    width:50px;
+    height:50px;
+    margin: 5px;
+    border:0.5px solid grey;
+    border-radius:5px;
+}
+
+.SelectedProductImage{
+border-color: teal;
+}
