@@ -6,7 +6,7 @@ import ProductData from '../Utils/ProductData';
 const ProductDetails = (props) =>{
     const colorOptions = props.data.colorOptions.map((item,pos)=>{
         const classArr=[classes.ProductImage]
-        if(pos==0){
+        if(pos == props.currentImagePos){
             classArr.push(classes.SelectedProductImage);
         }
         return(
@@ -16,8 +16,17 @@ const ProductDetails = (props) =>{
     });
 
     const featureList = props.data.featureList.map((item,pos)=>{
-        return(
-            <button key={pos} >{item}</button>
+      const classArr2=[classes.featureList]
+      if( pos==1 && props.showHeartBeatSection){
+            classArr2.push(classes.selectedFeature);
+      }  
+      else if(pos==0 && !props.showHeartBeatSection){
+        classArr2.push(classes.selectedFeature);
+
+      }
+      
+      return(
+            <button key={pos} onClick={() => props.onFeatureItemClick(pos)} className={classArr2.join(' ')}>{item}</button>
         )
     })
 

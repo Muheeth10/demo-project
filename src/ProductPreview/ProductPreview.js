@@ -4,7 +4,7 @@ import classes from './ProductPreview.module.css'
 const ProductPreview = (props) => {
     return(
         <div className={classes.ProductPreview}>
-              <img src={props.u}></img>
+              <img src={props.currentPreviewImage}></img>
 
                 {
                     props.showHeartBeatSection ?

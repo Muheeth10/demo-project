@@ -10,8 +10,8 @@ import ProductData from './Utils/ProductData';
 
 class App extends Component {
   state= {
-  ur:'https://imgur.com/iOeUBV7.png',
   time:0,
+  currentImagePos:0,
   showHeartBeatSection:false,
   heart:'https://i.giphy.com/media/1kJwmjkqY9JwJ0wBNB/giphy.webp',
   ProductData:ProductData,
@@ -19,8 +19,16 @@ class App extends Component {
     
       
    url = (pos) => {
-    const updatedPreviewImage = this.state.ProductData.colorOptions[pos].imageUrl;
-    this.setState({ur:updatedPreviewImage});
+    // const updatedPreviewImage = this.state.ProductData.colorOptions[pos].imageUrl;
+    this.setState({currentImagePos:pos});
+  }
+
+  onFeatureItemClick = (pos) => {
+   let updatedState =false;
+   if(pos === 1 ){
+      updatedState = true;
+   }
+    this.setState({showHeartBeatSection: updatedState});
   }
 
   timedis = () =>{
@@ -47,8 +55,8 @@ class App extends Component {
 
            
             <Topbar/>
-            <ProductPreview  u={this.state.ur} uh={this.state.heart} showHeartBeatSection={this.state.showHeartBeatSection}/>
-            <ProductDetails data={ProductData} onColorOptionClick={this.url} />
+            <ProductPreview  currentPreviewImage={this.state.ProductData.colorOptions[this.state.currentImagePos].imageUrl} uh={this.state.heart} showHeartBeatSection={this.state.showHeartBeatSection}/>
+            <ProductDetails data={ProductData} onColorOptionClick={this.url} currentImagePos={this.state.currentImagePos} onFeatureItemClick={this.onFeatureItemClick} showHeartBeatSection={this.state.showHeartBeatSection}/>
             
         </div>
       </div>
